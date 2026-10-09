@@ -2,67 +2,44 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="referrer" content="no-referrer" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>KAIZEN LELA-QA PATROL</title>
+  <link rel="icon" href="https://drive.google.com/file/d/1HC0PVU4h06rdwtLi4q6OGYbH3Je9AWg0/view" />
   <style>
-    * { box-sizing: border-box; }
-    body {
+    html, body {
       margin: 0;
-      min-height: 100vh;
-      min-height: 100dvh;
-      display: grid;
-      place-items: center;
-      padding: 24px;
-      background: #eef3f8;
-      color: #172a41;
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-    }
-    main {
+      padding: 0;
       width: 100%;
-      max-width: 460px;
-      padding: 32px 24px;
-      border: 1px solid #dce5ee;
-      border-radius: 20px;
-      background: #fff;
-      text-align: center;
-      box-shadow: 0 12px 36px #172a4110;
+      height: 100%;
+      background-color: #eee;
+      overflow: hidden; /* Mencegah scroll ganda */
     }
-    h1 { margin: 0 0 12px; font-size: 24px; line-height: 1.3; }
-    p { margin: 12px 0; }
-    .note { color: #52647a; font-size: 14px; }
-    a {
-      display: inline-block;
-      margin: 12px 0;
-      padding: 12px 24px;
-      border-radius: 10px;
-      background: #1556a0;
-      color: #fff;
-      font-weight: bold;
-      text-decoration: none;
+
+    .iframe-container {
+      width: 100%;
+      height: 100dvh; /* Menggunakan dvh agar pas di mobile browser */
+      overflow: hidden;
     }
-    a:hover { background: #10447f; }
-    a:focus-visible { outline: 3px solid #ecad28; outline-offset: 4px; }
+
+    iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
   </style>
 </head>
 <body>
-  <main>
-    <h1>KAIZEN LELA-QA PATROL</h1>
-    <p id="status" role="status">Mengalihkan ke aplikasi…</p>
-    <p class="note">Jika aplikasi belum terbuka, tekan tombol di bawah.</p>
-    <!-- Jika URL deployment berubah, cukup perbarui href tombol ini. -->
-    <a id="open-app" href="https://script.google.com/macros/s/AKfycbzjlnFvjSX0yygVK0H2ypp5Ax38im6EzqUT-LdSOJAm6xgOGHr9lSL_2OAh7y1A_4LGXQ/exec" target="_self" rel="noreferrer">Buka Aplikasi</a>
-    <noscript><p>Tekan Buka Aplikasi untuk melanjutkan.</p></noscript>
-  </main>
-  <script>
-    // Membuka aplikasi secara langsung, tanpa iframe.
-    // replace mencegah tombol Kembali mengulang halaman pengalihan ini.
-    try {
-      window.location.replace(document.getElementById('open-app').href);
-    } catch (error) {
-      document.getElementById('status').textContent = 'Tekan Buka Aplikasi untuk melanjutkan.';
-    }
-  </script>
+  <div class="iframe-container">
+    <iframe
+      id="app"
+      src="https://script.google.com/macros/s/AKfycbzjlnFvjSX0yygVK0H2ypp5Ax38im6EzqUT-LdSOJAm6xgOGHr9lSL_2OAh7y1A_4LGXQ/exec"
+      scrolling="yes"
+      allowfullscreen="true"
+      webkitallowfullscreen="true"
+      mozallowfullscreen="true"
+      allow="fullscreen; camera; microphone; display-capture; geolocation;">
+    </iframe>
+  </div>
 </body>
 </html>
